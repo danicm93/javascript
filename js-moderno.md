@@ -189,4 +189,56 @@ const numero = (num1, num2) => {
 
 ## Objetos
 
+Declaramos un objeto persona y vamos a añadirle diferentes propiedades
+
+```JS
+const persona = {
+  nombre: 'Paco',
+  apellido: 'Garcia',
+  edad: 29,
+  deportes: ['futbol', 'waterpolo', 'ping pong'],
+  casado: true,
+  links: {
+    social: {
+      twitter: 'https://twitter.com/nombre',
+      facebook: 'https://facebook.com/nombre.developer',
+    },
+    web: {
+      blog: 'https://nombre.com'
+    }
+  }
+};
+
+console.log(persona)
+```
+
+### Destructuring object
+
+Para desestructurar un objeto, abrimos llaves y colo camos la propiedad que nos interesa sacar dentro de las llaves
+
+```JS
+const { apellido } = persona;
+console.log(apellido)
+```
+
+Podemos renombrar propiedades
+
+```JS
+const { twitter: tweet, facebook: fb } = wes.links.social;
+console.log(tweet, fb)
+```
+
+Podemos desestructurar un segundo nivel y ademas
+
+```JS
+// Nivel 2
+const { links: {web} } = persona
+console.log(web)
+
+//Nivel 3
+const { links: {web : {blog} } } = persona
+console.log(blog)
+```
+
+
 
