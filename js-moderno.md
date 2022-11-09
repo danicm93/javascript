@@ -8,18 +8,18 @@ En el console.log podemos ver que son 20 y no nos pinta ningun tipo de error.
 Esto puede ser un problema, si te va la hoya porque tienes mucho código.
 
 ```JS
-var edad = 10
-var edad = 20
-console.log(edad) // 20
+var num = 10
+var num = 20
+console.log(num) // 20
 ```
 
 Si reemplazamos el Var por Let veremos como la consola nos lanza un error.
 La principal diferencia entre el Var y el Let es que nos permite limitar su alcance al scope
 
 ```JS
-let edad = 10
-let edad = 20
-console.log(edad) // error
+let num = 10
+let num = 20
+console.log(num) // error
 ```
 
 
@@ -27,27 +27,27 @@ Otro beneficio y la principal diferencia entre el Let y el Var
 Si hacemos un if, vemos que el var no se limita al scope
 
 ```JS
-var edad = 10
+var num = 10
 
-if(1==1){
-	var edad = 20
-	console.log('Scope', edad) // 20
+if(true){
+	var num = 20
+	console.log('Scope', num) // 20
 }
 
-console.log('Fuera Scope', edad) // 20
+console.log('Fuera Scope', num) // 20
 ```
 
 Esto mismo con Let, vemos que nos respeta el valor de 20 dentro del scope y fuera seguimos teniendo un 10
 
 ```JS
-let edad = 10
+let num = 10
 
-if(1==1){
-	let edad = 20
-	console.log('Scope', edad) // 20
+if(true){
+	let num = 20
+	console.log('Scope', num) // 20
 }
 
-console.log('Fuera Scope', edad) // 10
+console.log('Fuera Scope', num) // 10
 ```
 
 
@@ -57,7 +57,7 @@ tambien limitadas por el scope, mismo ejemplo
 ```JS
 const edad = 10
 
-if(1==1){
+if(true){
 	const edad = 20
 	console.log('Scope', edad) // 20
 }
@@ -74,3 +74,62 @@ const edad = 20 // SyntaxError
 const edad = 10
 edad = 20 // Error: "edad" is read-only
 ```
+
+Excepciones de las contanstes
+Podemos utilizar funciones que modifican el array, si nos permite realizar dicha acción
+Esto mismo pasa con los objetos ...
+
+```JS
+const nums = [10,20,30]
+nums.push(40)
+console.log(nums)
+```
+
+Tenemos un objeto al que le vamos a cambiar la edad y el apellido
+
+```JS
+const persona = {
+  nombre: 'Paco',
+  edad: 29
+}
+
+persona.edad = 21
+persona.apellido = 'Garcia'
+
+console.log(persona)
+```
+
+Que no se podría hacer, porque, porque estas reasignando
+
+```JS
+const persona = {
+  nombre: 'Paco',
+  edad: 29
+}
+
+persona.edad = 21
+persona.apellido = 'Garcia'
+
+persona = {
+  nombre: 'Alberto',
+  edad: 34
+}
+
+console.log(persona) //Uncaught TypeError: Assignment to constant variable.
+```
+
+Como hacer que no se modifique una constante
+
+```JS
+const persona = Object.freeze({
+  nombre: 'Paco',
+  edad: 29
+});
+
+persona.edad = 21
+persona.apellido = 'Garcia'
+
+console.log(persona)
+```
+
+
