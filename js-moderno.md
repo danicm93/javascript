@@ -240,5 +240,47 @@ const { links: {web : {blog} } } = persona
 console.log(blog)
 ```
 
+## Fetch API
 
+La API Fetch proporciona una interfaz JavaScript para acceder y manipular partes del canal HTTP.
+Necesitamos un then porque vamos a esperar una promesa
+El then necesita una funcion de flecha y a está funcion le pasamos la respuesta
+en un segundo then obtenemos la respuesta
 
+```JS
+fetch('https://rickandmortyapi.com/api/character/2')
+.then(res => res.json())
+.then(data => {
+	console.log(data)
+})
+```
+
+También tenemos el  catch
+
+```JS
+fetch('https://rickandmortyapi.com/api/character/2')
+.then(res => res.json())
+.then(data => {
+	console.log(data)
+})
+.catch(error => console.log(error))
+```
+
+## Async / Await
+
+Nos sinver para trabajar con promesas pero sin tener el engorro de encadenar los .then()
+Los await van a funcionar siempre que estén dentro de una función async, hay excepciones, pero de momento nos quedamos con esto
+
+```JS
+const getCharacters = async () => {
+	try{
+		const res = await fetch('https://rickandmortyapi.com/api/character/2');
+		const data = await res.json();
+		console.log(data);
+	}catch (error){
+		console.log(error)
+	}
+}
+
+getCharacters();
+```
