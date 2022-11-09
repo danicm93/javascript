@@ -171,3 +171,22 @@ const sum = (left, right) => 'la suma es: ' + (left + right)
 console.log(sum(10, 20))
 ```
 
+Asignar valor por defecto
+
+```JS
+const sum = (sum = 10) => sum + 20
+console.log(sum())
+```
+
+## Template String
+
+De esta forma podemos concatenar variables con string, hacer formulas, ...
+
+
+const numero = (num1, num2) => {
+  return `el numero es: ${num1 + num2}` 
+}
+
+## Objetos
+
+
