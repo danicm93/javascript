@@ -1,6 +1,6 @@
 # Fundamentos
 
-## Fundamentos
+## Var, let, const
 
 Un Var llamado edad y ésta sea 10, nosotros podemos nuevamente declarar que esa variable.
 Y ahora que sea 20.
@@ -132,4 +132,42 @@ persona.apellido = 'Garcia'
 console.log(persona)
 ```
 
+## Funciones
+
+Funcion clásica a función de flecha
+
+```JS
+function sum (left, right) {
+  console.log(left + right)
+}
+sum(10, 20)
+
+const sumArrow = (left, right) => {
+  console.log(left + right)
+}
+
+sumArrow(10, 20)
+```
+
+Ventajas de las funciones de fecha, podemos reducir código
+
+```JS
+function sum (num) {
+  console.log(num)
+}
+sum(10)
+
+const sumArrow = num => {
+  console.log(num)
+}
+
+sumArrow(20)
+```
+
+Podemos omitir returns
+
+```JS
+const sum = (left, right) => 'la suma es: ' + (left + right)
+console.log(sum(10, 20))
+```
 
