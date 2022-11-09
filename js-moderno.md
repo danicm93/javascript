@@ -50,7 +50,6 @@ if(true){
 console.log('Fuera Scope', num) // 10
 ```
 
-
 Por otro lado tenemos las constantes,estas no van a cambiar con el tiempo (aunque tiene excepciones)
 tambien limitadas por el scope, mismo ejemplo
 
@@ -284,3 +283,19 @@ const getCharacters = async () => {
 
 getCharacters();
 ```
+
+### Foreach
+
+
+
+### Map
+
+Crea un nuevo array con los resultados de la llamada a la función
+Esto nos siver para depurar la respuesta que obtenemos
+
+
+### Filter
+
+
+
+
