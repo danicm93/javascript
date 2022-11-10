@@ -591,8 +591,53 @@ const characters = results.map(character => ({
 console.log(characters);
 ```
 
+### Reduce
 
+Si yo quisiese obtener la suma de todos los puntos de los personajes
+La diferencia principal es que en lugar de obtener como primer parametro el objeto que se está recorriendo en ese momento,
+recibimos primero un acumulador y seguido el objeto que recorremos.
+Terminada nuestra función de flecha le pasamos al reducer como segundo parametro el valor por defecto del acumulador, en este caso el "cero"
 
+```JS
+const sumPoints = characters.reduce((total, character) => {
+            return total + character.points
+        }, 0)
 
+console.log(sumPoints);
+```
 
+Esto se puede dejar en una sola linea de la siguiente manera
 
+```JS
+const sumPoints = characters.reduce((total, character) => total + character.points, 0)
+console.log(sumPoints);
+```
+
+Ahora vamos a hacerlo un poco más complicado, lo que quiero es saber es cuantas especies tengo en mi array de personajes
+Para ello hacemos lo siguiente
+
+```JS
+const totalSpecies = characters.reduce((total, character) => [...total, character.species], [])
+console.log(totalSpecies);
+```
+
+Como podeis ver, tenemos especies dublicadas, yo no quiero eso, para eso hay una clase relativamente nueva en JS
+que es Set, simplemente englobamos nuestro nuevo array dentro de un Set y de esta forma si existe un elemento en el array, 
+no nos lo va volver a añadir
+
+```JS
+const totalSpecies = characters.reduce((total, character) => [...total, character.species], [])
+console.log(totalSpecies);
+```
+
+Pero, claro, ahora hemos perdido nuestro array, para que esto vuelva a ser un array simplemente
+Envolvemos nuestro código dentro de un Array.from
+
+```JS
+const totalSpecies = characters.reduce((total, character) => 
+            Array.from(new Set([...total, character.species])), 
+            []
+        )
+
+        console.log(totalSpecies);
+```
