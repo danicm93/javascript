@@ -177,14 +177,49 @@ const sum = (sum = 10) => sum + 20
 console.log(sum())
 ```
 
+Otra cosa importante que debemos saber es que una funcion en JS puede devolvernos otra función
+
+```JS
+function hello(){
+    return function(){
+        return "Hola Digi"
+    }
+}
+
+console.log(hello());
+```
+
+Podemos ejecutar la función interior simplemente colocando otros parentesis
+
+```JS
+console.log(hello()());
+```
+
+También podemos crear una función y ejecutarla al mismo tiempo
+
+```JS
+console.log(function greet(){
+    return 'Hello people!'
+}())
+```
+
+Incluso podemos quitarle el nombre, esto se utiliza mucho cuando trabajamos con eventos
+
+```JS
+console.log(function (){
+    return 'Hello people!'
+}())
+```
+
 ## Template String
 
 De esta forma podemos concatenar variables con string, hacer formulas, ...
 
-
+```JS
 const numero = (num1, num2) => {
   return `el numero es: ${num1 + num2}` 
 }
+```
 
 ## Objetos
 
@@ -192,24 +227,76 @@ Declaramos un objeto persona y vamos a añadirle diferentes propiedades
 
 ```JS
 const persona = {
-  nombre: 'Paco',
-  apellido: 'Garcia',
-  edad: 29,
-  deportes: ['futbol', 'waterpolo', 'ping pong'],
-  casado: true,
-  links: {
-    social: {
-      twitter: 'https://twitter.com/nombre',
-      facebook: 'https://facebook.com/nombre.developer',
+    nombre: 'Paco',
+    apellido: 'Garcia',
+    edad: 29,
+    deportes: ['futbol', 'waterpolo', 'ping pong'],
+    casado: true,
+    links: {
+      social: {
+        twitter: 'https://twitter.com/nombre',
+        facebook: 'https://facebook.com/nombre.developer',
+      },
+      web: {
+        blog: 'https://nombre.com'
+      }
     },
-    web: {
-      blog: 'https://nombre.com'
-    }
-  }
-};
-
+    enviarEmail : function () {
+        return 'correo enviado';
+    },
+  };
+  
 console.log(persona)
+console.log(persona.nombre)
+console.log(persona.enviarEmail())
 ```
+
+Podemos hacer mñas simple la función escribiendola de la siguiente manera
+
+```JS
+const persona = {
+    nombre: 'Paco',
+    apellido: 'Garcia',
+    edad: 29,
+    deportes: ['futbol', 'waterpolo', 'ping pong'],
+    casado: true,
+    links: {
+      social: {
+        twitter: 'https://twitter.com/nombre',
+        facebook: 'https://facebook.com/nombre.developer',
+      },
+      web: {
+        blog: 'https://nombre.com'
+      }
+    },
+    enviarEmail() {
+        return 'correo enviado';
+    },
+  };
+```
+
+Podemos acortar nombres si la constante o variable se llama igual que la clave
+
+```JS
+const name = 'Eva'
+const age = '25'
+
+const person = {
+    name: name,
+    age: age
+}
+    
+console.log(person)
+```
+
+```JS
+const person = {
+    name,
+    age,
+}
+console.log(person)
+```
+
 
 ### Destructuring object
 
@@ -218,6 +305,21 @@ Para desestructurar un objeto, abrimos llaves y colo camos la propiedad que nos 
 ```JS
 const { apellido } = persona;
 console.log(apellido)
+```
+
+Podemos desestructurar dentro de los parametros de una funcion
+
+```JS
+function printName(persona){
+    console.log(persona.nombre)
+}
+
+printName(persona)
+
+//Solucion
+function printName({nombre}){
+    console.log(nombre)
+}
 ```
 
 Podemos renombrar propiedades
