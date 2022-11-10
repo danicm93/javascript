@@ -401,19 +401,60 @@ const getCharacters = async () => {
 getCharacters();
 ```
 
-# Array method
+## Array method
 
-Si tenemos un array, nosotros podemos recorrerlo facilmente con un bucle for
+### Foreach
 
+Si tenemos un array, nosotros podemos recorrerlo facilmente con un bucle for, pero no va a ser lo normal
+Lo más seguro es que utilicemos algun método relacionando con arrays
 
+```JS
+const getCharacters = async () => {
+	try{
+		const res = await fetch('https://rickandmortyapi.com/api/character');
+		
+        const { info, results } = await res.json();
+
+		for (let i = 0; i < results.length; i++) {
+            const character = results[i];
+            console.log(character.name)
+        }
+
+	}catch (error){
+		console.log(error)
+	}
+}
+
+getCharacters();
+```
+
+Para hacerlo mas sencillo podemos utilizar el metodo foreach, 
+el foreach recibe como parametro una funcion que al ejecutarse nos va a retornar
+el valor que la funcion esta recibiendo
+El foreach va recorriendo los elementos y a medida que los recorre, la funcion lo recibe como parametro
+
+```JS
+names.forEach(function(name){
+    console.log(name)
+})
+```
 
 ### Map
 
+Usaremos un Map cuando queramos generar un array nuevo. El Map nos retorna un nuevo array
 Crea un nuevo array con los resultados de la llamada a la función
 Esto nos siver para depurar la respuesta que obtenemos
-
+El map no modifica el array anterior, sino que crea uno nuevo
 
 ### Filter
+
+
+### Find
+
+
+### Contact / Spread Operator
+
+
 
 
 
