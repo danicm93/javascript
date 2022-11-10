@@ -318,22 +318,22 @@ console.log(person)
 Para desestructurar un objeto, abrimos llaves y colo camos la propiedad que nos interesa sacar dentro de las llaves
 
 ```JS
-const { apellido } = persona;
-console.log(apellido)
+  const { surname } = person;
+  console.log(surname)
 ```
 
 Podemos desestructurar dentro de los parametros de una funcion
 
 ```JS
-function printName(persona){
-    console.log(persona.nombre)
+function printName(person){
+    console.log(person.name)
 }
 
-printName(persona)
+printName(person)
 
 //Solucion
-function printName({nombre}){
-    console.log(nombre)
+function printName({name}){
+    console.log(name)
 }
 ```
 
@@ -348,11 +348,11 @@ Podemos desestructurar un segundo nivel y ademas
 
 ```JS
 // Nivel 2
-const { links: {web} } = persona
+const { links: {web} } = person
 console.log(web)
 
 //Nivel 3
-const { links: {web : {blog} } } = persona
+const { links: {web : {blog} } } = person
 console.log(blog)
 ```
 
