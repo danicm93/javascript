@@ -407,13 +407,14 @@ getCharacters();
 
 Si tenemos un array, nosotros podemos recorrerlo facilmente con un bucle for, pero no va a ser lo normal
 Lo más seguro es que utilicemos algun método relacionando con arrays
+Los datos los tenemos que manipular dentro de la función
 
 ```JS
 const getCharacters = async () => {
 	try{
 		const res = await fetch('https://rickandmortyapi.com/api/character');
 		
-        const { info, results } = await res.json();
+        const { results } = await res.json();
 
 		for (let i = 0; i < results.length; i++) {
             const character = results[i];
@@ -434,9 +435,9 @@ el valor que la funcion esta recibiendo
 El foreach va recorriendo los elementos y a medida que los recorre, la funcion lo recibe como parametro
 
 ```JS
-names.forEach(function(name){
-    console.log(name)
-})
+results.forEach(function(character){
+            console.log(character.name)
+        })
 ```
 
 ### Map
@@ -445,6 +446,41 @@ Usaremos un Map cuando queramos generar un array nuevo. El Map nos retorna un nu
 Crea un nuevo array con los resultados de la llamada a la función
 Esto nos siver para depurar la respuesta que obtenemos
 El map no modifica el array anterior, sino que crea uno nuevo
+
+Vamos a crearnos nuestro propio array de objetos con lo que a nosotros nos interesa
+
+```JS
+const getCharacters = async () => {
+	try{
+		const res = await fetch('https://rickandmortyapi.com/api/character');
+		
+        const { results } = await res.json();
+
+        console.log(results);
+
+        /*results.forEach(function(character){
+            console.log(character.name)
+        })*/
+
+        const charactersBasic = results.map(character => {
+            return {
+                id: character.id,
+                name: character.name,
+                status: character.status,
+                idName : `${character.id} - ${character.name}`
+            }
+        })
+
+        console.log(charactersBasic);
+
+	}catch (error){
+		console.log(error)
+	}
+}
+
+getCharacters();
+```
+
 
 ### Filter
 
