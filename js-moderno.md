@@ -177,6 +177,21 @@ const sum = (sum = 10) => sum + 20
 console.log(sum())
 ```
 
+Podriamos tambien devolver un objeto desde una funcion de flecha
+El objeto sin parentesis falla porque JS piensa que es el cuerpo de la función
+
+```JS
+const number = () => 22;
+const array = () => [1,2,3];
+const objectFail = () => {name : 'Jose'} // Fall
+const object = () => ({name : 'Jose'}) // El bueno
+
+console.log(number())
+console.log(array())
+console.log(objectFail())
+console.log(object())
+```
+
 Otra cosa importante que debemos saber es que una funcion en JS puede devolvernos otra función
 
 ```JS
@@ -349,7 +364,7 @@ El then necesita una funcion de flecha y a está funcion le pasamos la respuesta
 en un segundo then obtenemos la respuesta
 
 ```JS
-fetch('https://rickandmortyapi.com/api/character/2')
+fetch('https://rickandmortyapi.com/api/character')
 .then(res => res.json())
 .then(data => {
 	console.log(data)
@@ -359,7 +374,7 @@ fetch('https://rickandmortyapi.com/api/character/2')
 También tenemos el  catch
 
 ```JS
-fetch('https://rickandmortyapi.com/api/character/2')
+fetch('https://rickandmortyapi.com/api/character')
 .then(res => res.json())
 .then(data => {
 	console.log(data)
@@ -375,7 +390,7 @@ Los await van a funcionar siempre que estén dentro de una función async, hay e
 ```JS
 const getCharacters = async () => {
 	try{
-		const res = await fetch('https://rickandmortyapi.com/api/character/2');
+		const res = await fetch('https://rickandmortyapi.com/api/character');
 		const data = await res.json();
 		console.log(data);
 	}catch (error){
@@ -386,7 +401,9 @@ const getCharacters = async () => {
 getCharacters();
 ```
 
-### Foreach
+# Array method
+
+Si tenemos un array, nosotros podemos recorrerlo facilmente con un bucle for
 
 
 
