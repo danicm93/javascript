@@ -54,24 +54,24 @@ Por otro lado tenemos las constantes,estas no van a cambiar con el tiempo (aunqu
 tambien limitadas por el scope, mismo ejemplo
 
 ```JS
-const edad = 10
+const years = 10
 
 if(true){
-	const edad = 20
-	console.log('Scope', edad) // 20
+	const years = 20
+	console.log('Scope', years) // 20
 }
 
-console.log('Fuera Scope', edad) // 10
+console.log('Out of Scope', years) // 10
 ```
 
 Si intentamos declarar la misma constante dos veces, obtenemos un error
 
 ```JS
-const edad = 10
-const edad = 20 // SyntaxError
+const years = 10
+const years = 20 // SyntaxError
 
-const edad = 10
-edad = 20 // Error: "edad" is read-only
+const years = 10
+years = 20 // Error: "years" is read-only
 ```
 
 Excepciones de las contanstes
@@ -87,48 +87,48 @@ console.log(nums)
 Tenemos un objeto al que le vamos a cambiar la edad y el apellido
 
 ```JS
-const persona = {
-  nombre: 'Paco',
-  edad: 29
-}
-
-persona.edad = 21
-persona.apellido = 'Garcia'
-
-console.log(persona)
+const person = {
+    name: 'Jose',
+    years: 29
+  }
+  
+  person.years = 21
+  person.surname = 'Garcia'
+  
+  console.log(person)
 ```
 
 Que no se podría hacer, porque, porque estas reasignando
 
 ```JS
-const persona = {
-  nombre: 'Paco',
-  edad: 29
-}
-
-persona.edad = 21
-persona.apellido = 'Garcia'
-
-persona = {
-  nombre: 'Alberto',
-  edad: 34
-}
-
-console.log(persona) //Uncaught TypeError: Assignment to constant variable.
+const person = {
+    name: 'Jose',
+    years: 29
+  }
+  
+  person.years = 21
+  person.surname = 'Garcia'
+  
+  person = {
+    name: 'Alberto',
+    years: 34
+  }
+  
+  console.log(person) //Uncaught TypeError: Assignment to constant variable.
 ```
 
 Como hacer que no se modifique una constante
 
 ```JS
-const persona = Object.freeze({
-  nombre: 'Paco',
-  edad: 29
-});
-
-persona.edad = 21
-persona.apellido = 'Garcia'
-
-console.log(persona)
+const person = Object.freeze({
+    name: 'Jose',
+    years: 29
+  })
+  
+  person.years = 21
+  person.surname = 'Garcia'
+  
+  console.log(person) //Uncaught TypeError: Assignment to constant variable.
 ```
 
 ## Funciones
@@ -197,7 +197,7 @@ Otra cosa importante que debemos saber es que una funcion en JS puede devolverno
 ```JS
 function hello(){
     return function(){
-        return "Hola Digi"
+        return "Hello Digi"
     }
 }
 
@@ -241,51 +241,51 @@ const numero = (num1, num2) => {
 Declaramos un objeto persona y vamos a añadirle diferentes propiedades
 
 ```JS
-const persona = {
-    nombre: 'Paco',
-    apellido: 'Garcia',
-    edad: 29,
-    deportes: ['futbol', 'waterpolo', 'ping pong'],
-    casado: true,
+const person = {
+    name: 'Jose',
+    surname: 'Garcia',
+    years: 29,
+    sports: ['football', 'basketball', 'ping pong'],
+    isMarried: true,
     links: {
       social: {
-        twitter: 'https://twitter.com/nombre',
-        facebook: 'https://facebook.com/nombre.developer',
+        twitter: 'https://twitter.com/name',
+        facebook: 'https://facebook.com/name.developer',
       },
       web: {
-        blog: 'https://nombre.com'
+        blog: 'https://name.com'
       }
     },
-    enviarEmail : function () {
-        return 'correo enviado';
+    sendEmail : function () {
+        return 'mail sent';
     },
   };
   
-console.log(persona)
-console.log(persona.nombre)
-console.log(persona.enviarEmail())
+console.log(person)
+console.log(person.name)
+console.log(person.sendEmail())
 ```
 
 Podemos hacer mñas simple la función escribiendola de la siguiente manera
 
 ```JS
-const persona = {
-    nombre: 'Paco',
-    apellido: 'Garcia',
-    edad: 29,
-    deportes: ['futbol', 'waterpolo', 'ping pong'],
-    casado: true,
+const person = {
+    name: 'Jose',
+    surname: 'Garcia',
+    years: 29,
+    sports: ['football', 'basketball', 'ping pong'],
+    isMarried: true,
     links: {
       social: {
-        twitter: 'https://twitter.com/nombre',
-        facebook: 'https://facebook.com/nombre.developer',
+        twitter: 'https://twitter.com/name',
+        facebook: 'https://facebook.com/name.developer',
       },
       web: {
-        blog: 'https://nombre.com'
+        blog: 'https://name.com'
       }
     },
-    enviarEmail() {
-        return 'correo enviado';
+    sendEmail () {
+        return 'mail sent';
     },
   };
 ```
