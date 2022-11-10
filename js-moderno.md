@@ -440,7 +440,7 @@ results.forEach(function(character){
         })
 ```
 
-### Map
+### Map / Spread Operator
 
 Usaremos un Map cuando queramos generar un array nuevo. El Map nos retorna un nuevo array
 Crea un nuevo array con los resultados de la llamada a la función
@@ -481,14 +481,115 @@ const getCharacters = async () => {
 getCharacters();
 ```
 
+Ahora imaginaros que digo, vale, quiero lo que ya tenía antes y además añadirle propiedades que me interesan a mi,
+para ello tenemos algo llamado Spread Operator que nos permite romper el objeto anterior para crear uno nuevo
+de esta forma no tenemos que ir añadiendo propiedad por propiedad
+
+```JS
+const getCharacters = async () => {
+	try{
+		const res = await fetch('https://rickandmortyapi.com/api/character');
+		
+        const { results } = await res.json();
+
+        console.log(results);
+
+        /*results.forEach(function(character){
+            console.log(character.name)
+        })*/
+
+        const charactersBasic = results.map(character => {
+            return {
+                ...character,
+                id: character.id,
+                name: character.name,
+                status: character.status,
+                id : `${character.id} - ${character.name}`,
+                idName : `${character.id} - ${character.name}`
+            }
+        })
+
+        console.log(charactersBasic);
+
+	}catch (error){
+		console.log(error)
+	}
+}
+
+getCharacters();
+```
+
+Para limpiar el return, recordamos que no podemos poner directamente llaves {} porque JS cree que estamos dentro del cuerpo de la función
+Asi que lo que tenemos que hacer es simplemente añadirle parentesis () y solucionado
+
+```JS
+const charactersBasic = results.map(character => ({
+                ...character,
+                id: character.id,
+                name: character.name,
+                status: character.status,
+                id : `${character.id} - ${character.name}`,
+                idName : `${character.id} - ${character.name}`
+        }))
+```
 
 ### Filter
 
+Al igual que el map, podemos recoger elementos, pero además podemos añadirle una condición y si se cumple la condición nos va a devolver un array nuevo
 
-### Find
+Sino copnemos una condición, nos devuelve un array vacio
 
+```JS
+const charactersFiltered = results.filter(character => {
+            console.log(character)
+        })
 
-### Contact / Spread Operator
+        console.log(charactersFiltered); // []
+```
+
+A diferencia del map, sino devolvemos nada, optenemos un undefined por elemento
+
+```JS
+const charactersFiltered = results.map(character => {
+            console.log(character)
+        })
+
+        console.log(charactersFiltered); // [undefined,...]
+```
+
+Ahora, si queremos solo a los personajes que están vivos
+
+```JS
+const charactersFiltered = results.filter(character => {
+            if(character.status === 'Alive'){
+                return true;
+            }
+        })
+
+        console.log(charactersFiltered);
+```
+
+Este código se podría resumir de la siguiente manera
+
+```JS
+const charactersFiltered = results.filter(character => character.status === 'Alive')
+console.log(charactersFiltered);
+```
+
+Incluso, si nuestro objetivo es añadir úna propiedad más a nuestros objetos y además filtrarlos, 
+podemos hacer lo siguiente
+
+```JS
+const characters = results.map(character => ({
+            ...character,
+            id: character.id,
+            name: character.name,
+            status: character.status,
+            id : `${character.id} - ${character.name}`,
+            idName : `${character.id} - ${character.name}`
+        })).filter(character => character.status === 'Alive')
+console.log(characters);
+```
 
 
 
