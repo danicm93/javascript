@@ -532,6 +532,55 @@ const charactersBasic = results.map(character => ({
                 idName : `${character.id} - ${character.name}`
         }))
 ```
+Otra cosa importante es que cuando queramos crear un objeto a partir de otro, pensamos que podemos hacer los siguiente
+
+```JS
+const person = {
+  name: 'Jose',
+  years: 29
+}
+
+console.log(person)
+
+const person2 = person;
+person2.name = 'Eva';
+
+console.log(person2)
+```
+
+Parece que todo ha salido bien, pero si volvemos a imprimir person, veremos que también se nos ha modificado
+
+```JS
+const person = {
+  name: 'Jose',
+  years: 29
+}
+
+console.log(person)
+
+const person2 = person;
+person2.name = 'Eva';
+
+console.log(person2)
+console.log(person)
+```
+
+Si queremos crear un objeto a partir de otro tendriamos que hacer lo siguiente
+
+```JS
+const person = {
+  name: 'Jose',
+  years: 29
+}
+
+console.log(person)
+
+const person2 = {...person};
+person2.name = 'Eva';
+
+console.log(person2)
+console.log(person)
+```
 
 ### Filter
 
