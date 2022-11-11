@@ -692,3 +692,44 @@ const totalSpecies = characters.reduce((total, character) =>
 
         console.log(totalSpecies);
 ```
+
+## Import
+
+Creamos un directorio data con import.js dentro
+
+```JS
+export const person = {
+  name: "Jose",
+  surname: "Garcia",
+  years: 29,
+  sports: ["football", "basketball", "ping pong"],
+  isMarried: true,
+  links: {
+    social: {
+      twitter: "https://twitter.com/name",
+      facebook: "https://facebook.com/name.developer",
+    },
+    web: {
+      blog: "https://name.com",
+    },
+  },
+  sendEmail: function () {
+    return "mail sent";
+  },
+};
+```
+En nuestro index importamos en fichero
+
+```JS
+import { person } from "./data/import.js";
+console.log(person) // No funciona
+```
+
+Nos falta añadir en el index.html lo siguiente
+
+```JS
+<script type="module" src="./index.js"></script>
+```
+
+Ahora si nos funciona la importación
+
