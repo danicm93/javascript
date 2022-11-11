@@ -363,7 +363,7 @@ Necesitamos un then porque vamos a esperar una promesa*
 El then necesita una funcion de flecha y a está funcion le pasamos la respuesta
 en un segundo then obtenemos la respuesta
 
-*Las promesas son un concepto para resolver el problema de asincronía de una forma mucho más elegante y práctica que, por ejemplo, utilizando funciones callbacks directamente.
+*El objeto Promise en JavaScript representa una operación asíncrona (y su valor resultante) que eventualmente se completará (o fallará). Mientras tanto está en estado pendiente
 
 ```JS
 fetch('https://rickandmortyapi.com/api/character')
